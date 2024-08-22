@@ -18,7 +18,7 @@ en_SPAML <- read.csv("05_Analyses/Data/en_SPAML.csv")
 de_SPAML <- read.csv("05_Analyses/Data/de_SPAML.csv")
 
 dataSurvey <- read_survey("04_Pathway_Survey/Data/Pathway validation survey.csv")
-dataSurvey <- dataSurvey[dataSurvey$StartDate > as.POSIXct("2024-01-12 12:30:00", tz = "UTC"),] # removes responses before the actual start of the survey (i.e., pilot runs, and so-called survey previews)
+dataSurvey <- dataSurvey[as.POSIXct(dataSurvey$StartDate, tz = "UTC") > as.POSIXct("2024-01-12 13:30:00", tz = "UTC"),] # removes responses before the actual start of the survey (i.e., pilot runs, and so-called survey previews)
 dataSurvey <- dataSurvey[dataSurvey$Progress==100,] #only keep completed surveys #56 completed responses from 60 participants in total (in four case, two people collaborated)
 round(median(dataSurvey$`Duration (in seconds)`)/60, 0)
 
