@@ -52,3 +52,5 @@ po/*~
 rsconnect/
 .DS_Store
 *.gz
+05_Analyses/Data/de_SPAML.csv
+05_Analyses/Data/en_SPAML.csv
