@@ -14,10 +14,10 @@ set.seed(42) #relevant for Silverman's test
 source("05_Analyses/Functions multiverse.R")
 #source("05_Analyses/Processing SPAML.R") #if you run for the first time comment out this line
 
-en_SPAML <- read.csv("../Data SPAML/en_SPAML.csv")
-de_SPAML <- read.csv("../Data SPAML/de_SPAML.csv")
+en_SPAML <- read.csv("05_Analyses/Data/en_SPAML.csv")
+de_SPAML <- read.csv("05_Analyses/Data/de_SPAML.csv")
 
-dataSurvey <- read_survey("../Data Survey/Pathway validation survey.csv")
+dataSurvey <- read_survey("04_Pathway_Survey/Data/Pathway validation survey.csv")
 dataSurvey <- dataSurvey[dataSurvey$StartDate > as.POSIXct("2024-01-12 12:30:00", tz = "UTC"),] # removes responses before the actual start of the survey (i.e., pilot runs, and so-called survey previews)
 dataSurvey <- dataSurvey[dataSurvey$Progress==100,] #only keep completed surveys #56 completed responses from 60 participants in total (in four case, two people collaborated)
 round(median(dataSurvey$`Duration (in seconds)`)/60, 0)
@@ -32,7 +32,7 @@ propComprehension <- prop.table(table(dataSurvey$Comprehension))
 propExpertise <- prop.table(table(factor(dataSurvey$Q38_1, levels = c("Very low", "Low", "Moderate", "High", "Very high"))))
 propConfidence <- prop.table(table(factor(dataSurvey$Q38_2, levels = c("Very low", "Low", "Moderate", "High", "Very high"))))
 
-png("Proficiency.png", width = 1100, height = 1200, res = 250)
+png("05_Analyses/Images/Proficiency.png", width = 1100, height = 1200, res = 250)
 par(mfrow = c(3, 1))
 
 stackedBar(propExpertise, main = "Self-rated expertise", labels = names(propExpertise), posLegend = c(-0.3, 0.7), margins = c(3.5, 4, 1.5, 10) + 0.1)
@@ -62,15 +62,15 @@ de_SPAML <- list(base = de_SPAML)
 #de_dataMultiverse <- de_SPAML %>% decision1(exclBelow18 = TRUE) %>% decision2(exclNonNative = TRUE) %>% decision4(exclBelow100trials = TRUE) %>% decision5(exclSameResp = TRUE) %>% decision6(exclAltResp = TRUE) %>% decision7(excl40 = TRUE, excl70 = TRUE, excl3SD = TRUE, exclMAD = TRUE, excl25NW = TRUE, excl25W = TRUE, excl30WNW = TRUE, exclProptest = TRUE)  %>% decision8(excl25 = TRUE, excl50 = TRUE) %>% decision9(exclError = TRUE) %>% decision10(exclFirstTrial = TRUE, keepRegardless = TRUE) %>% decision11(exclNegRTs = TRUE) %>% decision12(excl25250 = TRUE, keepRegardless = TRUE) %>% decision13(exclTO50 = TRUE) %>% decision14(exclPart2.5SD = TRUE, exclPartMAD = TRUE, keepRegardless = TRUE) %>% decision15(exclIt2.5SD = TRUE, keepRegardless = TRUE) %>% decision16(excl50ms = TRUE, excl100ms = TRUE, excl150ms = TRUE, excl160ms = TRUE, excl200ms = TRUE) %>% decision17(excl2500ms = TRUE, excl3000ms = TRUE) %>% decision18(exclTrial3SD = TRUE, exclIt3SD = TRUE, exclPart3SD = TRUE) %>% removeNonwords() %>% removeFillerwords() %>% ztransform() %>% itemPriming() 
 #correlations(de_dataMultiverse, en_dataMultiverse)
 
-#source("../Analyses/Multiverse analysis.R") #if you run for the first time comment out this line
+#source("05_Analyses/Multiverse analysis.R") #if you run for the first time comment out this line
 
-resultsDefaultOrder <- read.csv("../Analyses/Results/correlationMultiverseDefaultOrder.csv")
-resultsAltOrder <- read.csv("../Analyses/Results/correlationMultiverseAltOrder.csv")
+resultsDefaultOrder <- read.csv("05_Analyses/Results/correlationMultiverseDefaultOrder.csv")
+resultsAltOrder <- read.csv("05_Analyses/Results/correlationMultiverseAltOrder.csv")
 
 summary(resultsDefaultOrder)
 summary(resultsAltOrder)
 
-png("Multiverse.png", width = 2000, height = 800, res = 250)
+png("05_Analyses/Images/Multiverse.png", width = 2000, height = 800, res = 250)
 par(mfrow = c(1, 2))
 hist(resultsDefaultOrder$correlation, xlab = "Correlation", main = "Default order validation survey", las = 1)
 hist(resultsAltOrder$correlation, xlab = "Correlation", main = "Alternative order", las = 1)
@@ -115,9 +115,9 @@ keep <- sapply(labels, checkLastTwo)
 keepLabels <- labels[keep]
 keepLabels <- lapply(keepLabels, function(x){x[! x %in% c("decision13_2", "decision23")]}) # remove the "decision" to calculate the correlation (decision23) and the incorrectly worded decision (see above)
 
-#source("../Analyses/Many analyst.R") #if you run for the first time comment out this line
+#source("05_Analysis/Many analyst.R") #if you run for the first time comment out this line
 
-correlationIndividualPipelines <- read.csv("../Analyses/Results/correlationIndividualPipelines.csv")
+correlationIndividualPipelines <- read.csv("05_Analyses/Results/correlationIndividualPipelines.csv")
 colnames(correlationIndividualPipelines) <- c("correlation", "pValue")
 
 #Manually check all pipelines to see whether they are internally consistent
@@ -168,7 +168,7 @@ plot2 <- ggplot(correlationIndividualPipelines, aes(x = "", y = correlation)) +
        color = "Silverman's test") +
   theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
 
-png("Many-analyst.png", width = 2000, height = 800, res = 250)
+png("05_Analyses/Images/Many-analyst.png", width = 2000, height = 800, res = 250)
 grid.arrange(plot1, plot2, ncol=2)
 dev.off()
 
