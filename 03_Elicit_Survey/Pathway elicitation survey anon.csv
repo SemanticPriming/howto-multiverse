@@ -1,0 +1,593 @@
+RecordedDate,Q1,Q2,Eligibility 1,Eligibility 2,Duration (in seconds),Finished,StartDate,EndDate,Progress
+Recorded Date,"We now would like to ask you to provide the data-processing steps you would take (if any) before and/or in between the analysis steps to answer the research question. Please be as specific as possible and describe precisely how to perform a certain data-processing step. It should be possible for us to implement these steps based on your description, so please include information regarding measurement units, order of different steps (if you provide multiple steps), etcetera. If you think no data-processing is required, please mention that explicitly (do not leave the box blank). Note that you do not need to mention data formatting steps (e.g., converting the dataframe from wide to long) and other actions that have no impact on the data as such. Also, you can assume that there were no experiment errors (e.g., stimuli not being displayed correctly).","If you deem the proposed data-analysis suboptimal or inappropriate, please explain how it should be modified in your opinion. If you deem it appropriate, you can just answer ""No modification"".",Do you have experience analyzing response latency/reaction time data?,Do you have experience with semantic priming research?,Duration (in seconds),Finished,Start Date,End Date,Progress
+"{""ImportId"":""recordedDate"",""timeZone"":""America/Denver""}","{""ImportId"":""QID9_TEXT""}","{""ImportId"":""QID10_TEXT""}","{""ImportId"":""QID13""}","{""ImportId"":""QID14""}","{""ImportId"":""duration""}","{""ImportId"":""finished""}","{""ImportId"":""startDate"",""timeZone"":""America/Denver""}","{""ImportId"":""endDate"",""timeZone"":""America/Denver""}","{""ImportId"":""progress""}"
+2023-06-09 02:16:18,,,,,5,True,2023-06-09 02:16:10,2023-06-09 02:16:16,100
+2023-06-09 02:44:31,"RRR
+FFVF",,,,223,True,2023-06-09 02:40:46,2023-06-09 02:44:29,100
+2023-06-09 03:55:47,,,,,427,True,2023-06-09 03:48:38,2023-06-09 03:55:46,100
+2023-06-09 04:02:34,"frfegegg
+p",,,,34,True,2023-06-09 04:01:58,2023-06-09 04:02:32,100
+2023-06-13 23:53:11,,,No,Yes,35,True,2023-06-13 23:52:35,2023-06-13 23:53:10,100
+2023-06-13 23:55:09,,,,,3,True,2023-06-13 23:55:04,2023-06-13 23:55:08,100
+2023-06-14 07:42:08,,,,,7,True,2023-06-14 07:41:59,2023-06-14 07:42:06,100
+2023-06-14 07:44:18,,,No,No,12,True,2023-06-14 07:44:04,2023-06-14 07:44:16,100
+2023-06-14 07:45:31,,,No,Yes,56,True,2023-06-14 07:44:32,2023-06-14 07:45:29,100
+2023-07-10 15:57:42,i am doing the thing! test the thing!,here's the thing!,Yes,Yes,46,True,2023-07-10 15:56:54,2023-07-10 15:57:40,100
+2023-07-10 15:59:38,test test test,test,Yes,No,435,True,2023-07-10 15:52:22,2023-07-10 15:59:38,100
+2023-07-10 16:02:43,,,No,No,12,True,2023-07-10 16:02:29,2023-07-10 16:02:42,100
+2023-07-10 16:39:29,,,Yes,Yes,303,True,2023-07-10 16:34:24,2023-07-10 16:39:28,100
+2023-07-10 16:41:45,"1. Test whether data is positively skewed (as reaction time data often are). 
+2. If data is positively skewed, transform data (e.g., log transformation)
+3. Only after this, I would z-transform the data and continue",No modification,Yes,No,537,True,2023-07-10 16:32:47,2023-07-10 16:41:44,100
+2023-07-10 17:11:26,"Reaction times are frequently log-transformed to address skewness when running tests that rely on the assumption of normality. Person's r for example can give misleading results when the variables are highly skewed (such as with reaction times). In R, it is possible to use the R package {bestNormalize} (https://cran.r-project.org/package=bestNormalize) to automatically test all available transformation method and pick the best one, using the `bestNormalize::bestNormalize()` and `bestNormalize::predict()` functions. Care should be taken whether to consider the ordered quantile normalization (ORQ) or not in the available transformations. This transformation step would normally apply at the very end of the process. Extreme outlier observations (with unrealistic reaction times < 200 ms or greater than 1000 ms) should also be excluded because they may reflect unrealistic reaction times, or inattention, and may lead to misleading results.",It seems appropriate,Yes,Yes,2831,True,2023-07-10 16:24:14,2023-07-10 17:11:25,100
+2023-07-10 17:52:21,"Step 1: Clean the data by removing response times outside the 100 ms - 3000 ms range.
+Step 2: Filter out incorrect trials and extreme response times (under 200 ms or over 2000 ms).
+Step 3: Organize the data by grouping it by participant, condition, and target word, then calculate the mean response time for each group.
+Step 4: Normalize the data by conducting a z-transformation on each participant's reaction times.
+Step 5: Compute the priming effects by subtracting the mean response time of unrelated trials from the related trials for each participant and target word.
+","No modification. ",No,Yes,1393,True,2023-07-10 17:29:07,2023-07-10 17:52:20,100
+2023-07-10 18:39:45,,,Yes,Yes,5413,True,2023-07-10 17:09:31,2023-07-10 18:39:45,100
+2023-07-10 18:48:47,,,No,No,70,True,2023-07-10 18:47:37,2023-07-10 18:48:47,100
+2023-07-10 23:51:53,,,Yes,No,405,True,2023-07-10 23:45:07,2023-07-10 23:51:53,100
+2023-07-11 00:52:39,,,No,No,33,True,2023-07-11 00:52:05,2023-07-11 00:52:38,100
+2023-07-11 01:14:19,"As I do not have to inspect data for any error na missing data, I would inspect the data for outliers; namely, as we want to process retrieval latencies I would exclude RTs above/below 2.5SD to make sure that I have as homogenous and coherent data as possible. To this end, I would do it separately for each variable; namely RTcar-dog and RTcat-dog.","The priming is measured as follows: zRTcar-dog - zRTcat-dog, but I would still divide it by zRTcat-dog which would take into account the individual differences (similar to interference effect measured by Stroop-like tests).",Yes,Yes,1101,True,2023-07-11 00:55:57,2023-07-11 01:14:18,100
+2023-07-11 01:25:30,"1) Fatigue
+I would first check if the number of trials did not introduce additional variability due to the participants' fatigue. The length of the words may vary across languages, so the question is whether the first block is similar to the last block across the languages. Thus, to compare reaction times and fatigue, I would run a multilevel model with differences between reaction times prime-target and unrelated prime-target regressed on the block (first vs. last) and the type prime-target and unrelated prime-target) as a factor.
+
+If the fatigue effect varies across countries, I would focus on the middle blocks in the subsequent analyses to answer the main hypothesis.
+
+2) The mean character length
+Furthermore, I would follow up the analyses by checking whether the mean character length of the stimuli across languages varies. The main effect could be detected, but the stimuli length would interfere and mask it. So, for instance, reaction times to English and Italian prime-word would be the same (i.e., the main effect detected), but the English-German pair not, as maybe German prime words would be longer than unrelated-prime words.","In general, I deem it appropriate. I would, though, add several additional checks, as described in the previous question.",Yes,No,1125,True,2023-07-11 01:06:44,2023-07-11 01:25:30,100
+2023-07-11 01:29:41,"The fewer preprocessing steps the better. I would only exclude responses that are more than 3 SDs above or below the participant's mean. Otherwise, I would not perform any preprocessing steps.",No modification,Yes,Yes,843,True,2023-07-11 01:15:36,2023-07-11 01:29:40,100
+2023-07-11 01:33:49,"1. Test if the result is influenced by outliers: Remove data points with an RT below 200 msec or above the upper quartile plus three times the IQR. Then re-run the analysis.
+2. Since RT data are skewed, the means (e.g., the within-participant mean used for the initial z-scoring) will not reflect the bulk of responses. To test whether this affects the results, perform a log-transformation before doing the rest of the analysis.","To me, this feels like the job for a linear mixed model (LMM). Using LMMs carries the advantage of accounting for uncertainty in the item-level estimates (which is ignored in the correlation analysis). Moreover, it would also allow you to use a likelihood function that accounts for the skew of the reaction time data (e.g., a shifted lognormal, if using brms).
+
+The formula may look something like: RT ~ primed * language + (primed*language|item) + (primed*language|subject). This model would allow you to inspect the by-item variation in the interaction between language and semantic priming. You could also include more languages than just two. I am not sure exactly how this would look, but I suspect you need another level in the model and to inspect the VPC of by-item slopes of priming at the language-level.",Yes,No,6828,True,2023-07-10 23:40:00,2023-07-11 01:33:48,100
+2023-07-11 01:59:09,"Data pre-processing:
+1) Exclude participants that do not match recruitment criteria (e.g., participant who saw German set but indicates that they have a different native language)
+2) Exclude participants that do not match previously set accuracy criterion 
+3) Exclude error and post-error trials ",No modification,Yes,No,536,True,2023-07-11 01:50:11,2023-07-11 01:59:08,100
+2023-07-11 02:12:02,"Given the raw data in ms I would use a cut-off of at least 100ms, i.e., response times less than 100ms are not included in the calculation of the arithmetic mean of the RT (both for car-dog and cat-dog)
+The threshold might be set to 150ms if less than 2% of overall response times are below 150 ms (in the literature it varies between 100 and 200ms)
+I would check the distribution of the RTs per participant, is it bimodal or multimodal? If so, I would consider removing the participant as something weird is going on (can be timing / hardware issues or dyslexia for some words/letters)
+(there is a check for multimodality, se Fisher et al. 1994 Testing for multimodality and in R one could use the mclust package and or the silvermantest package) 
+
+to sum up: 
+1. remove too fast (implausible) RTs
+what is too fast depends on the software/hardware and SOA used but responding before the word has been shown on the screen has to be excluded, as well as there is a motor response latency
+2. check for multimodality and exclude participants with multimodal RT distributions (separate for car-dog and cat-dog)
+","You state you would use correlation, I would use Kendall's tau and Pearson (comparing English and German etc), not just Pearson. Pearson is on the size, but Kendall is on rank order. For the main hypothesis rank order is the minimum requirement, hence I would add Kendall's tau",Yes,Yes,1518,True,2023-07-11 01:46:43,2023-07-11 02:12:02,100
+2023-07-11 03:46:13,"Before data analysis:
+I would first filter so that only correctly identified words were included in the analysis.
+
+Then I would remove any trials wherein participants responded under 50ms or after 2000ms.",No modification,Yes,Yes,620,True,2023-07-11 03:35:52,2023-07-11 03:46:12,100
+2023-07-11 04:02:50,"I would remove from the dataset responses that took less than a given time interval (typically 200 ms) and responses that took more than another given time interval (typically 1600 ms) in order to ensure that the response was not too quick and therefore random, nor too late, again indicating a random response.
+
+I would not replace missing data.
+
+I would not remove outliers, as there has already been a selected timeframe (200-1600 ms)
+",No modification,Yes,No,9873,True,2023-07-11 01:18:16,2023-07-11 04:02:50,100
+2023-07-11 04:05:30,"In my studies I have always found that logRT yield less noisy and more reliable (psychometrically) effects than natural RTs. I would also remove RTs from trials with incorrect response and then, for each participant, calculate the mean and SD of RTs (across al conditions; otherwise, filtering can increase the false positive rate) and then remove any trial with an RT 3 or more SDs above or below the mean.",No modification.,Yes,No,337,True,2023-07-11 03:59:51,2023-07-11 04:05:28,100
+2023-07-11 05:06:29,"There are many ways in which response time data can be preprocessed. I would start with more general and conceptual steps (the way how I would think)  and then proceed to more concrete steps (the way how I would proceed). 
+
+To prepare an optimal strategy suited for the project, I would check if there exist any recent standards/guidelines that I can follow. If not I would prepare it by myself (see information provided below) based on the literature and forums. Also, (if my programming skills would allow) I would try to simulate data or reserve some portion of pilot data or at least try the whole procedure on myself and simulate various potential problems (e.g., wrong answers, keyboard layouts, distractions, to fast or to slow responses and so on) to contextualize it. Based on these “train” data, I would conduct a pilot data-processing procedure. After the pilot testing procedure, I would pre-register the procedure before the final data processing to limit my degrees of freedom when working with real datasets. Optimally, besides the primary analysis, I would also conduct and report the sensitivity analysis without cleaning procedure (as not treating outliers is an option similar to treating them in some way) or even include a few key decision points that can substantially alter results (multiverse analysis). I would be as transparent as possible. 
+
+To provide more concrete steps suitable for the present task, I would follow these steps: 
+First, I would check invalid traits and check if the stimulus presentation or response recording was not faulty (for example, I would check stimulus onset times). I would not include participants that have faulty presentations/recordings. 
+
+Second, I would check errors where participants gave the wrong answer or failed to respond. In particular, If the errors are too abundant, I would not include participants beyond a certain threshold (e.g., 75% accuracy) as these participants could have technical or other problems. Also, I would not include wrong trials as these can bias results. 
+
+Third I would consider dealing with outliers. By outliers, I mean response data that are extremely fast (e.g., a response time shorter than 100-200 ms. is probably not valid) or slow (response beyond 2s could be biased due to attention lapses or distractions). The outliers can be handled in various ways (see e.g., Berger and Kiefer 2021 for simulation and comparison of different response time outlier exclusion methods). I would consider these recommendations and my technical abilities and available resources. If possible, I would try 2-3 approaches and provide a comparison of results.   
+
+For example, (3a) in the software that I tried for data collection of reaction times, it was very easy to implement a percentile method (not include trials beyond certain thresholds (e.g., 5th and 95th percentile) per individual. Based on this experience, I would include only trials that pass this criterion and then follow the suggested data analytics strategy (i.e., “Response times to the critical targets will be z-transformed for each participant separately...).  
+Alternatively, to provide results with a more comprehensive alternative approach, according to Berger and Kiefer (2021), the methods excluding RTs as outliers based on z-scores (“2sd,” “3sd,” and “transform”) showed considerably small (absolute) biases, few Type-I errors and excluded only small proportions of reaction times and, as z-scores will be used in the following analysis. Therefore, I would try to implement one of these methods; i.e., (3b) z-transformed values exceeding a particular z-score (e.g., 3) will be excluded before subtracting z-transformed related and unrelated trials response times; or, optimally, (3c) I would use the formula mentioned in Berger and Kiefer (2021): “For each transformed value, the square root of the untransformed value minus the minimum value of the sample divided through the sample range is calculated. The fraction bounds all values between 0 and 1, while the square root enlarges small values”. Afterwards, these values are z-transformed and values exceeding a particular z-score (e.g., 3) are excluded; however, to be honest, at this phase, I´m not sure if this is fully compatible with the suggested analytic strategy. ","No modification. ",Yes,Yes,9002,True,2023-07-11 02:36:27,2023-07-11 05:06:29,100
+2023-07-11 06:16:52,"I make the following additional assumptions: There is a principled way to match priming effects from one language to the other (say dog/cat in English to hund/katze in German). I also assume, we have preregistered all of these decisions.
+
+1. Define a reaction window that is considered to measure the target process. For example, humans needs 100-200 ms to react to a visual stimulus. RTs below such a threshold can be assumed not have reacted to the visual stimulus. Moreover, word processing would unlikely take longer than 2000 ms. So dependent on what the target time window is, remove all trials outside of it (e.g. <200 and >2000).
+
+2. Apply a preregistered exclusion criteria for participants that states what a valid participant's behavior should look like. For example if a participant produce X% of reactions outside of the window defined in (1), the participant is excluded from further processing.
+
+3. Log-transform RTs to account for naturally skewed RT values per participant. Do you get normal-ish distributions across the board? If yes, proceed, if not find better transformation. 
+
+4. z-transform RTs for participants as described on previous page.
+
+Given that many of these RTs are collected online, a certain level of additional trimming might be necessary.
+
+5. I would inspect z-transformed distributions and remove outliers on a participant-basis based on a very lenient criterion (below -5 and above +5 SDs) to account for responses that are likely to have been confounded by external factors such as distractions. 
+
+Now for a simple correlation between language1 and 2, some form of aggregation would be required. Any form of aggregation loses important information about the measurement error, so methods that allow for hierarchical assessment would be preferred. I assume the description of the analysis suggests a simple correlational assessment however. (if not some form of multi-level model should be applied that allows to estimate between-item and between-participant variation)
+
+6. Calculate median (not mean) values per item per condition, calculated across all participants.
+
+7. Subtract the median z-transformed response times of the two conditions from each other for each item (item priming effect)
+
+8. Correlate priming effects between language 1 and 2 using a Pearson correlation test.  
+
+9. Check if assumptions are met: Inspect scatterplot to determine whether covariation is linear. (we already checked normality of distributions in (3))
+
+10. Get a cookie, you deserve it. ","As suggested in previous window, simple correlations would require aggregation which removes observed variation. This variation can be informative and affect our degree of (un)certainty in the point estimate. A hierarchical model or measurement-error model could be more appropriate to be conservative.",Yes,No,2570,True,2023-07-11 05:34:00,2023-07-11 06:16:50,100
+2023-07-11 07:23:24,"While accuracy is not the focus here, I would use accuracy to set the threshold for random responders. Let's say that an individual hits 50% accuracy overall, but has a 50ms average response time: I would consider data from this subject irrelevant. While overall it would make no difference since the ""randomness"" would be spread accross all trials categories and accross all items, we should avoid disregarding any perceptual effect of words or couples of words on random response, e.g. an inhibitory effect on the behavioral response when familiar couples are detected.
+Setting a reasonable rt threshold would be a difficult task, but in my opinion should be data driven, by looking for clusters of subjects (random responders vs readers).",I think the proposed data-analysis is appropriate.,Yes,Yes,1910,True,2023-07-11 06:51:33,2023-07-11 07:23:23,100
+2023-07-11 07:27:13,,,No,No,33,True,2023-07-11 07:26:38,2023-07-11 07:27:12,100
+2023-07-11 07:33:00,"1. Discard all filler trials from the data
+2. Import the English and German data in long format into the final database
+3. Run a linear mixed model analysis on the data, using language and target category (related vs. unrelated) as fixed factors and subject as a random grouping factor, with RT as the dependent variable",No modification,Yes,No,1362,True,2023-07-11 07:10:17,2023-07-11 07:32:59,100
+2023-07-11 08:34:28,"I would remove trials with a reaction time below 250ms before calculating the z-transformed RTs for each participant. The justification is that 250ms is a lower threshold for simple reaction time tasks (e.g., pressing a key immediately
+upon attending to a stimulus; Posner, 1980), and unlikely to represent a meaningful lexical decision.
+I would also remove participants that lost more than 25% of their trials due to the previous step, as they may not be performing the task well (either inattention causing them to respond on the subsequent trial, which leads to what looks like very short RTs) or tendency to respond without evaluating the stimulus. ",No modification. This is exactly what I had envisioned.,Yes,No,1184,True,2023-07-11 08:14:41,2023-07-11 08:34:26,100
+2023-07-11 08:57:13,,,Yes,No,59894,True,2023-07-10 16:18:57,2023-07-11 08:57:12,100
+2023-07-11 09:07:23,"I have no additional data-processing steps to suggest for the response time, but I would suggest looking at accuracy too.",No modification,Yes,No,517,True,2023-07-11 08:58:44,2023-07-11 09:07:22,100
+2023-07-12 03:19:03,"Your approach seems fair. There are many ways how I could analyze the data, but I don't see any additional benefits in modifying what you've already suggested.",No modification,Yes,Yes,3340,True,2023-07-12 02:23:21,2023-07-12 03:19:02,100
+2023-07-12 04:51:44,"Before z-transforming response times to critical targets for each participant, I would choose a cutoff as a function of the proportion of responses eliminated. For instance, a 1000-ms or 1500-ms cutoff, if that results in the elimination of as much as 5-15% of the data, including outliers. Eliminating long reaction times can increase power, as faster reaction times are more stable than longer reaction times (Ratcliff, 1993).
+Another measure that is commonly used to establish cutoffs is to discard those trials in which the reaction times were 2 standard deviations above or below the mean reaction times for each participant. Such trials could be considered outliers.
+
+Ratcliff, R. (1993). Methods for dealing with reaction time outliers. Psychological Bulletin, 114(3), 510–532. https://doi.org/10.1037/0033-2909.114.3.510","I would recommend that, instead of establishing correlations between the item-level priming effects of the data in English and the data in other languages, to do an ANOVA with ""language"" as the independent variable.
+Alternatively, it would be very interesting to use techniques based on machine learning, such as Boosted Regression Trees, to analyze whether the item-level priming effects vary as a function of different variables: language, lexical variables (frequency, familiarity, valence, arousal, iconicity, etc.), subject variables (age, gender, etc.)....
+In our group we have used this type of analysis in different publications, and I think it could be very interesting for this study. I leave a couple of links to these researches:
+
+- Romero-Rivas, C., & Rodriguez-Cuadrado, S. (2021). The Psychological Impact of the COVID-19 Pandemic Affected Decision-Making Processes. The Spanish Journal of Psychology, 24, E16. doi:10.1017/SJP.2021.14
+- Rodriguez-Cuadrado, S., Hinojosa, J.A., Guasch, M. et al. Subjective age of acquisition norms for 1604 English words by Spanish L2 speakers of English and their relationship with lexico-semantic, affective, sociolinguistic and proficiency variables. Behav Res (2022). https://doi.org/10.3758/s13428-022-02026-9",Yes,Yes,1796,True,2023-07-12 04:21:46,2023-07-12 04:51:43,100
+2023-07-12 07:43:24,"A) If a paired samples test is used instead of correlation, the data-processing steps would be as follows:
+
+    (1) Z-transformation of response times: Each participant's response times to critical targets will be z-transformed separately. This involves subtracting each participant's arithmetic mean response time to critical targets from their response time at each target trial, and then dividing the result by the participant's standard deviation, using only critical trials.
+
+   (2) Separation of related and unrelated trials: The related and unrelated trials will be separated for each target.
+
+   (3) Calculation of mean z-transformed response times: The arithmetic mean of the z-transformed response times will be calculated for both the related and unrelated trials, aggregated across participants.
+
+   (4) Calculation of item-level priming effects: The mean z-transformed response time for unrelated trials will be subtracted from the mean z-transformed response time for related trials for each target. This will create item-level priming effects.
+
+    (5) Comparison of item-level priming effects: The item-level priming effects based on the English data will be compared with the equivalent item-level priming effects based on the German data using a paired samples test. The test will determine if there is a significant difference between the two sets of item-level priming effects.
+
+   (6) Reporting the main outcome: The point estimate of the difference between the item-level priming effects, along with its 95% confidence interval and p-value (testing the null hypothesis: rho = 0; alternative hypothesis: rho > 0), will be reported as the main outcome of interest to answer the research question.
+
+
+
+B) If Bayesian correlation is used instead of traditional correlation, the data-processing steps would be as follows:
+
+   (1) Z-transformation of response times: Each participant's response times to critical targets will be z-transformed separately. This involves subtracting each participant's arithmetic mean response time to critical targets from their response time at each target trial, and then dividing the result by the participant's standard deviation, using only critical trials.
+
+   (2) Separation of related and unrelated trials: The related and unrelated trials will be separated for each target.
+
+    (3) Calculation of mean z-transformed response times: The arithmetic mean of the z-transformed response times will be calculated for both the related and unrelated trials, aggregated across participants.
+
+    (4) Calculation of item-level priming effects: The mean z-transformed response time for unrelated trials will be subtracted from the mean z-transformed response time for related trials for each target. This will create item-level priming effects.
+
+   (5)  Bayesian correlation analysis: The item-level priming effects based on the English data will be correlated with the equivalent item-level priming effects based on the German data using Bayesian correlation analysis. This analysis will estimate the posterior distribution of the correlation coefficient between the two sets of item-level priming effects.
+
+  (6)  Reporting the main outcome: The point estimate of the correlation coefficient, along with its 95% credible interval and the probability of the alternative hypothesis being true (H1: rho > 0), will be reported as the main outcome of interest to answer the research question. The Bayesian approach allows for a more nuanced interpretation of the correlation while considering the uncertainty associated with the estimation.
+
+In addition to the mentioned data-processing steps, if outcome-neutral tests and quality checks are needed, the following steps can be considered:
+
+    Outcome-neutral tests: Conducting outcome-neutral tests is important to ensure the validity and reliability of the data. This can involve checking for potential confounding variables or biases that may affect the results. For example, evaluating if there are any systematic differences in response times between conditions or trials that are unrelated to the research question.
+
+Robustness checks: Conduct robustness checks to assess the stability and robustness of the findings. This can involve analyzing subsets of the data or applying alternative analysis approaches to ensure the results are consistent and not overly influenced by specific data points or assumptions.
+
+Sensitivity analysis: Perform sensitivity analysis to examine the impact of different modeling choices or assumptions on the results. This can help assess the robustness of the findings and explore potential alternative explanations or interpretations.",no modification,Yes,Yes,1016,True,2023-07-12 07:26:27,2023-07-12 07:43:24,100
+2023-07-12 08:57:09,"1) I would check the data and remove any missing observations (e.g., NA values) that would prevent the calculation of z-scores
+
+2) I would sort the RT data in ascending order and check for any unusual values (e.g., negative RTs or any numbers that are inconsistent with the task), which can sometimes be caused by software malfunctioning. If there is less than 10% of those per participant, I would usually just discard them. Otherwise, I would remove the participant from the analysis. 
+
+3) I would calculate the accuracy scores for each participant and ensure that participants' accuracy was at least 10% above chance-level performance. Participants who don't meet this criterion would be excluded. This is because they likely weren't doing the task.
+
+4) I would remove RTs <100 ms or > 3000ms as outliers. The upper limit usually depends on how much time participants are given to make a response. I usually look at what most previous studies have done in the past and pre-register the outlier thresholds for transparency. 
+
+5) I would do a QQ plot to check the distribution of the data. RTs often tend to have a distribution skewed to the right. I would check if log-transforming the RTs improved the distribution and use the log-transformed data for analysis if this is the case. I would report the untransformed analysis in the Supplementary and note if there are any differences in the text.
+","The plan sounds reasonable, though I don't have too much experience with item-level analyses. 
+
+If I understood correctly, you are averaging across participants (and likely other relevant variables such as country), which may lead to some loss of information. I have heard that there are some multi-level correlation models that may be able to address this (though I haven't used them myself). Otherwise, I have no other suggestions.
+",Yes,No,11560,True,2023-07-12 05:44:28,2023-07-12 08:57:08,100
+2023-07-12 09:16:07,,,No,No,180,True,2023-07-12 09:13:05,2023-07-12 09:16:06,100
+2023-07-12 11:44:53,"Before z scoring the data, I would look for potential outliers in RT which might indicate a lapse in the participant's attention. I would do this using the standard mean +- 2 stdev for culling.","I think the analysis is probably ok without the outlier analysis, since there should be very few outliers anyway.",Yes,No,312,True,2023-07-12 11:39:40,2023-07-12 11:44:52,100
+2023-07-12 14:38:22,"1) Check for and remove outliers - first check percentage of correct responses per subject. It is very easy to button press with a study like this and you want only want subjects that were trying. 
+2) Since the trial cuts off at 3000 ms, check for very fast reaction times to remove and replace. I usually winsorize in my reaction time studies at 3 SD. Not sure what criteria I would use here since 2 SDs and 3 SDs might not be effective at identifying reaction times that are too fast. But there would have to be some minimum reaction time threshold to identify word or not.
+3) Finally, I would only use correct responses for my reaction time analyses.
+",No modification,Yes,No,1020,True,2023-07-12 14:21:21,2023-07-12 14:38:21,100
+2023-07-13 02:13:11,"1. I would first check each participant's accuracy rates/time outs. Because this is an easy task, participants with low accuracy rates should be entirely discarded, as it could mean that the participant misunderstood instructions, not motivated/paying attention, using the wrong button as a 'word' response etc. I am not clear how to define ""low"" but I usually put all participants on a distribution and if their accuracy rates are less than 3 SDs from the grand mean I make the decision to fully exclude those participants. I assume that if the trial is ""timed out"" then it will be a missing trial... If there are too many of such time outs it can mean computer/internet issues and I would exclude the participant. The 3SD accuracy rule can be applied here too. 
+
+2. The next step is exclusions at the level of individual trials for each participant. I would exclude trials whose RTs are more than 2.5 SDs above or below the participant's means. I would also exclude incorrect trials (e.g., pressing nonword when the target is a word). ",no modification,Yes,Yes,961,True,2023-07-13 01:57:08,2023-07-13 02:13:10,100
+2023-07-13 09:38:02,,,Yes,Yes,1454,True,2023-07-13 09:13:47,2023-07-13 09:38:01,100
+2023-07-14 01:45:15,"1. calculate z-scores for response times:
+   - for each participant, calculate the arithmetic mean response time to critical targets.
+   - subtract the participant's mean response time from their response time on each critical target trial.
+   - divide the result by the participant's standard deviation, using only critical trials.
+
+2. separate related and unrelated trials for each target:
+   - identify the related prime trials and unrelated prime trials for each critical target.
+   - create two separate datasets: one for related trials and another for unrelated trials.
+
+3. calculate mean z-transformed response times:
+   - calculate the arithmetic mean of the z-transformed response times for each target separately for the related trials dataset.
+   - calculate the arithmetic mean of the z-transformed response times for each target separately for the unrelated trials dataset.
+
+4. compute item-level priming effects:
+   - for each target, subtract the mean z-transformed response time of the unrelated trials from the mean z-transformed response time of the related trials.
+
+5. perform correlation analysis:
+   - use the item-level priming effects based on the Language A data and the equivalent item-level priming effects based on the Language B data.
+   - calculate the Pearson correlation coefficient (r) between the two sets of item-level priming effects.
+   - determine the 95% confidence interval of the correlation coefficient.
+   - calculate the p-value for the correlation test with the null hypothesis (H0: rho = 0) and the alternative hypothesis (H1: rho > 0).",no modification,Yes,Yes,2209,True,2023-07-14 01:08:24,2023-07-14 01:45:14,100
+2023-07-14 19:03:28,"Reaction time data tends to frequently contain outlier trials that do not result from the process of interest. Thus, I would suggest removing outlying responses that are greater than 3 SD above or below each participant's mean response time. This would be a first step before any means are computed.  
+
+I'm aware that there is some debate as to whether or not RT data should be transformed to make the distribution more normal. Log and reciprocal transformations are relatively common. However, some research (Schramm and Rouder, 2019) suggests log transforms offer no benefit in terms of increased power or better Type I error control and suggests reciprocal transformations can even lead to decreased power. My personal inclination in this situation is not to do any normalization transformations.",No modification,Yes,No,3225,True,2023-07-14 18:09:42,2023-07-14 19:03:27,100
+2023-07-17 08:41:33,,,Yes,Yes,1093,True,2023-07-17 08:23:19,2023-07-17 08:41:32,100
+2023-07-17 16:26:00,,,Yes,No,125,False,2023-07-10 16:23:50,2023-07-10 16:25:56,55
+2023-07-17 16:29:29,,,,,297,False,2023-07-10 16:24:28,2023-07-10 16:29:26,18
+2023-07-17 18:39:59,,,,,4,False,2023-07-10 18:39:53,2023-07-10 18:39:58,18
+2023-07-17 19:52:17,,,Yes,Yes,50,False,2023-07-10 19:51:23,2023-07-10 19:52:13,73
+2023-07-17 21:08:43,,,Yes,Yes,516,False,2023-07-10 21:00:04,2023-07-10 21:08:41,55
+2023-07-17 21:28:55,I would remove incorrect trials and I would then remove trials where the response time was more than 3SD beyond each participant's mean reaction time before z-transforming the data for individual participants.,The key analysis seems to rest on assessing the correlation between item level effects in the two samples. I might suggest as a complementary approach a multi-level model in which country is a variable at one level and item-level effects are nested within participants. I might also consider computing the grand mean of item-level effects for each country and running an ANOVA with country as a between subjects variable.,Yes,No,1292,True,2023-07-17 21:07:21,2023-07-17 21:28:54,100
+2023-07-17 21:30:24,,,Yes,No,405,False,2023-07-10 21:23:34,2023-07-10 21:30:20,82
+2023-07-18 00:53:40,,,Yes,No,28,False,2023-07-11 00:53:11,2023-07-11 00:53:39,73
+2023-07-18 01:52:48,,,,,87,False,2023-07-11 01:51:20,2023-07-11 01:52:47,18
+2023-07-18 01:56:18,"1. Exclude trials with extremely short reaction times (e.g., <200ms). I'd also run a sensitivity analysis, excluding trials with reaction times <250 ms and <300ms.
+2. Log transform the reaction times (instead of z-scoring them; or maybe log transform and then z-score them)
+3. Separate related and unrelated trials for each target
+4. Subtract their arithmetic mean response times
+","Almost everything was OK but I’d not average over trials but model the responses to these trials directly, using a linear mixed-effects model with a by-subject and by-target type random intercept. This random effect term will account for dependencies in RTs within subjects and target types.",Yes,No,3059,True,2023-07-18 01:05:18,2023-07-18 01:56:17,100
+2023-07-18 01:58:16,,,Yes,Yes,140,False,2023-07-11 01:55:53,2023-07-11 01:58:14,73
+2023-07-18 03:32:35,,,Yes,Yes,244,False,2023-07-11 03:28:26,2023-07-11 03:32:31,73
+2023-07-18 07:17:51,,,Yes,Yes,14900,False,2023-07-11 03:09:29,2023-07-11 07:17:50,73
+2023-07-18 08:00:15,,,Yes,Yes,22046,False,2023-07-11 01:52:47,2023-07-11 08:00:13,55
+2023-07-18 09:15:10,,,Yes,Yes,59,False,2023-07-11 09:14:10,2023-07-11 09:15:09,45
+2023-07-18 12:14:20,,,Yes,No,257653,True,2023-07-15 12:40:05,2023-07-18 12:14:19,100
+2023-07-18 12:24:14,"Initially, I would look at descriptives and plots for accuracy and RT.
+
+I would then first examine task compliance and, depending on what is common for this type of task, consider excluding participants with accuracy below 60%.
+
+Second, I would check for any impossible/wrong RTs, i.e. shorter than 0 and longer than 3000, and exclude any such trials.
+
+Third, I would consider removind trials with premature responses (RT < 150 ms). ",No modification,Yes,No,587,True,2023-07-18 12:14:26,2023-07-18 12:24:14,100
+2023-07-18 14:18:27,,,Yes,Yes,538,False,2023-07-11 14:09:27,2023-07-11 14:18:25,73
+2023-07-18 14:55:00,,,No,Yes,17,False,2023-07-11 14:54:38,2023-07-11 14:54:55,55
+2023-07-19 05:15:44,,,Yes,No,95,False,2023-07-12 05:14:06,2023-07-12 05:15:42,55
+2023-07-19 12:19:08,,,Yes,Yes,1284,True,2023-07-19 11:57:42,2023-07-19 12:19:07,100
+2023-07-19 13:00:52,"1) We will systematically check for the presence of potential statistical outliers in correctly identifying words vs non words in all the statistical tests presented in this data. We considered all the observations with a studentized (t - student) deleted residual greater than 4 in relation to incorrect answers as outliers (see McClelland, 2014).
+
+2) Asumming that we find normality, equal variance, etc. We will use one sample t - test with relatedness as IV (related vs unrelated, within subjects) and the log of reaction time as de DV.  DV can also be the reaction time difference between related and unrelated words. We can run correlations of these DV, between results of different countries. 
+
+3) We will use a conditional logistic regression to compare the rate of correct answers between words and no words, for this process we will use use maximum likelihood estimation. 
+",No modification,Yes,Yes,2416,True,2023-07-19 12:20:34,2023-07-19 13:00:51,100
+2023-07-19 13:00:52,"1) We will systematically check for the presence of potential statistical outliers in correctly identifying words vs non words in all the statistical tests presented in this data. We considered all the observations with a studentized deleted residual greater than 4 in relation to the incorrect answers as outliers (see McClelland, 2014).
+2) Assuming the all statistical assumptions are met (normality, equal variances, etc.), we will run a one sample t test with ""relatedness"" as IV (related vs. unrelated, withins-subject) and the log of reaction time as a DV. We can also use as DV the reaction time difference between related and unrelated words. We will run correlations of these DVs between the different langages.
+3) Finally, we will run a conditional logistic regression to compare the rate of correct answers between words and none words given relatedness using maximum likelihood estimation. We will check whether the rate of correct answers did not differ between languages using contingency tables. 
+",No modification,Yes,Yes,3834,True,2023-07-19 11:56:57,2023-07-19 13:00:52,100
+2023-07-19 14:03:38,,,Yes,Yes,102576,False,2023-07-11 09:34:00,2023-07-12 14:03:36,73
+2023-07-19 17:36:42,Why not measure differences between languages using a t-test or ANOVA? not sure why you used a correlation.,"t-test, or ANOVA instead of correlation",Yes,No,1005,True,2023-07-19 17:19:55,2023-07-19 17:36:41,100
+2023-07-20 01:27:45,"1) I would use RT instead of z-transformed scores
+2) I would use RT to target word as the dependent variable
+3) I would introduce prime-target relatedness as a factor (related/unrelated)
+4) I would inspect the RT (to target word) distribution in the full dataset and exclude the obvious outliers (RT<200ms and RTs that are visually separated on the righthand side of the distribution, up to 1% of the data
+5) I would transform the RTs following BoxCox
+6) I would build mixed-effects models to control for the variation in speakers and items
+7) One additional idea: I would play with RTs to primes as predictors (in addition to relatedness as a factor). There might be some risks of autocorrelation in this predictor set, but it might be interesting to play with it.","I have reservations regarding the subtraction of related and unrelated conditions (""we will separate related and unrelated trials for each target, after which we subtract their arithmetic mean z-transformed response times (aggregated across participants) ""). In my opinion, this way plenty of information is lost. I would suggest using RT to targets and introducing prime-target relatedness as the independent variable. I would use a mixed-effects approach to deal with participant and item variation. Also, I would not exclude data points separately for each participant. I would exclude the extreme outliers (e.g. RT<200ms and RTs that are clearly separated from the rest of the distribution), then I would fit the models, choose the best model and then refit the model on the subset of data which I obtained by excluding the residuals that are outside of +/-2.5 units of standard deviation.",Yes,Yes,1607,True,2023-07-20 01:00:57,2023-07-20 01:27:45,100
+2023-07-20 02:27:53,,,Yes,No,149144,False,2023-07-11 09:02:03,2023-07-13 02:27:48,55
+2023-07-20 09:37:06,,,No,Yes,125,False,2023-07-13 09:34:59,2023-07-13 09:37:04,73
+2023-07-20 09:49:44,,,Yes,No,471,True,2023-07-20 09:41:53,2023-07-20 09:49:44,100
+2023-07-20 21:20:18,"•	In my view, no drastic/thorough data-preprocessing (e.g. data transformation) is needed (but we’re open to counterarguments and as my team is good at coding, we could help putting together any needed pipelines). I reckon just canonical pre-processing steps such as retaining correct responses from non-corrupted (non-missing) data, and integrating all data sets into one file are enough.
+•	I wouldn’t transform the data. I’d use the RTs in their original metric in order to preserve the distributional shape typical of RTs (i.e. positive skew).
+•	I’d then visualise the RT distributions of related and unrelated trials via empirical cumulative distribution functions (ECDFs).
+•	The previous approach would be very intuitive to see a ‘shift’ in the entire distribution of RTs with the advantage of allowing seeing differences at different quantiles of the distributions.
+•	If a simpler pairwise approach is needed, I’d then compare selected quantiles of the marginal distributions associated with two dependent groups via Harrell-Davis quantile estimator with bootstrap (via the ‘Dqcomhd’ function in the ‘WRS2’ R package)
+•	Such analysis can be performed for each language separately.
+•	However, if a regression framework is to be considered, I’d try the following: 
+If the model is (using Wilkinson and Rogers notation) ‘RT ~ T + X’
++ (1|language) + (1|item) + (1|participant)’ where T is trial type (related vs unrelated) and X’ is a list of other covariates that may be of interest (e.g. gender and age). Also note interactions and main effects need to be decided in advance. The other values in the model are random effects.
+o	Multiverse analysis A = I’d submit the model to a linear quantile mixed modelling approach in which I’d consider effects on the .25, .5 and .75 quantiles of the RT distribution (i.e. effects on fast, average and slow RTs)
+o	Multiverse analysis B = I’d submit the model to a Generalised Additive Model for Location, Scale and Shape approach where the RTs would be fit via an Ex-Gaussian distribution and other distribution(s) likely to give a good fit and to be selected via AIC, wormplots, bucketplots or a combination thereof (e.g. the Birnbaum-Saunders distribution or the Generalised Exponential Gaussian distributions). The result would allow to determine if the covariates (of major interest would be the variable ‘T’) have effects on the location and scale parameters of the RT distribution. Effects on the shape (kurtosis and skewness) can be examined as well but their interpretation is challenging. Note too it’ll all depend on the number of parameters of the distribution used to fit the RTs. In the case of the Ex-Gaussian there’ll be three parameters to examine and in the case of the Birnbaum-Saunders there’ll be only two parameters.
+o	If there are numeric covariates of interest (e.g. results of a psychometric test on semantic memory for each participant), these can be modelled in GAMLSS via smooth functions (e.g. P-spline or neural networks).
+o	Metrics such as AIC, GAIC (suitable for GAMLSS models) and cross-validation can be used to assess the models. However, pseudo R2 are also informative.
+",the proposed data-analysis is appropriate BUT it's just one of the possible forks in a larger multivariate analysis pipeline.,Yes,Yes,90144,True,2023-07-19 20:17:52,2023-07-20 21:20:17,100
+2023-07-21 07:40:59,"Even if the assumption seems to be that the RTs would be z-Trasnformed, we would go back to the raw RTs (there is a lot that could be said about transformations). In addition, accuracies wold be important not to remove.
+
+As exploratory data analyses we would generate delta plots per participant and averaged (with vincentiles), and also conditional accuracy functions.   
+
+
+
+",,Yes,Yes,435,True,2023-07-21 07:33:43,2023-07-21 07:40:59,100
+2023-07-21 07:48:50,See the next answer,"Even if the assumption seems to be that the RTs would be z-Trasnformed, we would go back to the raw RTs (there is a lot that could be said about transformations). In addition, accuracies would be important not to remove.
+
+As exploratory data analyses, we would generate delta plots per participant and averaged (with vincentiles), and also conditional accuracy functions.   
+",Yes,Yes,947,True,2023-07-21 07:33:02,2023-07-21 07:48:49,100
+2023-07-21 08:41:13,,,Yes,No,80118,False,2023-07-13 10:25:52,2023-07-14 08:41:10,36
+2023-07-22 00:23:21,,,Yes,Yes,134,False,2023-07-15 00:21:04,2023-07-15 00:23:18,64
+2023-07-22 11:33:06,,,Yes,Yes,293,False,2023-07-15 11:28:06,2023-07-15 11:33:00,73
+2023-07-24 07:08:22,"I would perform visual inspection of data tbefore z-transformation to check for any issues in data format etc. I would perform outlier correction, to exclude trials with unrealisticaly short RT (have pressed buttons without visually perceiving stimuli) or untypically long reaction times. This could be done using a cut-off of -/+ SD around the mean. Also I would exclude participants that reacted on less than 50% of trials as they probably did not follow the task in a meaningful way / were not motivated.",No modification,Yes,Yes,671,True,2023-07-24 06:57:10,2023-07-24 07:08:21,100
+2023-07-24 07:53:29,"First, reaction times are generally not normally distributed. If this doesn't prevent from calculating z-scores, I'd first check the skweness of the RTs, probably followed by an inverse or log transformation (with a general preference for inverses, see for instance Ratcliff, 1993). 
+I would then process the data with linear mixed models, including participants and stimuli as random factors : intercepts for subjects and items, as well as by-pp and by-item random slopes for the effects of interest. ","I'm not sure I fully understand the desired correlation calculation. If a difference is sought between several languages, why not add this factor as a fixed factor in the model?",Yes,Yes,1144,True,2023-07-24 07:34:24,2023-07-24 07:53:28,100
+2023-07-24 09:12:30,"1. Before the analysis: check for outliers. The standard practice is to check whether there are z-scores that are over 3.0. 
+
+2. After the analysis: conduct equivalence tests. The value of equivalence tests is to check whether a non-significant result is practically equivalent to zero or has no meaningful impact if it falls within the equivalence bounds set by the researcher. 
+","The statistical analysis plan is appropriate for addressing the research question. One option however is to supplement them with a Bayesian analysis. Here are the steps:
+
+1. Bayesian Z-Transformation of Response Times: Instead of using fixed means and standard deviations for each participant, Bayesian methods allow you to specify prior distributions for these parameters. For example, you can use weakly informative priors based on previous studies or expert knowledge.
+
+2. Bayesian Separation of Related and Unrelated Trials: Again, you can specify prior distributions for the means and standard deviations of z-transformed response times for related and unrelated trials.
+
+3. Bayesian Calculation of Item-Level Priming Effects: Compute item-level priming effects as the posterior distribution of the difference between the means of z-transformed response times for related and unrelated trials. This would give you a distribution of possible values for the priming effect, rather than a single point estimate.
+
+4. Bayesian Correlation Analysis: Instead of obtaining a single point estimate and p-value as in frequentist methods, Bayesian correlation analysis provides a posterior distribution of the correlation coefficient. This distribution reflects the uncertainty around the correlation, considering the prior information and the data.
+
+5. Bayesian Hypothesis Testing: Compare the posterior distribution of the correlation coefficient to the null hypothesis (H0: rho = 0) to assess the strength of evidence for or against the null hypothesis. This can be done by calculating the posterior probability that the correlation is greater than zero (H1: rho > 0).
+
+Conducting Bayesian analysis can be computationally intensive and requires expertise in this domain, as it is more complex than frequentist analysis. 
+",Yes,Yes,219,True,2023-07-24 09:08:50,2023-07-24 09:12:29,100
+2023-07-24 09:36:56,"1. First, I'd exclude participants with low accuracy (<70%) in either word- or non-word targets
+
+2. I would transform response times to make their distribution closer to the Gaussian one. I would consider both log and inverse transformation, and adopt the one that provides the better result (checked via visual inspection of a qq plot)
+
+3. I would remove individual datapoints whoe response times substantially diverge from the distributions obtained at step 2
+
+4. Before computing the by-target priming effect, I would partial out the effect of surface properties of prime and target on response times. I would run a regression analysis with zRT as dependent variable, and frequency and orthographic length of both prime and target as independent variables, as well as random intercepts for targets and primes. Eventually, I would use the residuals of such a model as RT estimates, in order to have a variable that more precisely capture the impact of prime relatedness
+
+5. Over and above correlation between priming effects in English vis-à-vis German, I would compare the effect size of prime relatedness in either language. In order to do so, I would run separate regression analyses similar to the one presented in step 4, but using ""prime relatedness"" as an additional independent variable (factor level). I would consider the variance uniquely explained by this latter variable as a measure of the impact of priming in a given language.","Not sure they qualify as ""modifications"", but, as detailed in the previous question, before running the correlation analysis I would make and effort to partial out the impact of surface lexical properties on RTs (in order to better isolate the actual priming effect). Moreover, I would add an extra step aimed at evaluating the RT variance uniquely explained by priming in either language.",Yes,Yes,1970,True,2023-07-24 09:04:05,2023-07-24 09:36:55,100
+2023-07-24 15:14:05,,,,,57,False,2023-07-17 15:13:06,2023-07-17 15:14:03,18
+2023-07-24 20:56:35,,,Yes,No,561094,False,2023-07-11 09:04:54,2023-07-17 20:56:29,55
+2023-07-25 04:46:03,"Since you are focusing on reaction times, before z-transforming the data, I would remove data from inaccurate responses. Then, I would clean the data from outlier values. More specifically I would remove trials in which reaction times deviate more than 2.5 sd from the mean, calculated separately for related/unrelated trials.",No modification,Yes,No,1459,True,2023-07-25 04:21:43,2023-07-25 04:46:02,100
+2023-07-25 05:11:21,,,No,No,158,True,2023-07-25 05:08:42,2023-07-25 05:11:21,100
+2023-07-25 06:51:07,,,Yes,No,620,False,2023-07-18 06:40:44,2023-07-18 06:51:05,64
+2023-07-26 01:24:43,,,Yes,No,164,False,2023-07-19 01:21:58,2023-07-19 01:24:43,82
+2023-07-26 08:40:21,,,Yes,No,103,False,2023-07-19 08:38:38,2023-07-19 08:40:21,73
+2023-07-26 19:16:43,,,Yes,Yes,214,False,2023-07-19 19:13:06,2023-07-19 19:16:41,55
+2023-07-27 12:35:30,,,Yes,Yes,21217,False,2023-07-20 06:41:47,2023-07-20 12:35:24,73
+2023-07-27 18:54:20,"For reaction time data, I might be concerned about abnormally long trials (e.g., first trial as participants are getting accustomed to the task or trials where participants might randomly stop paying attention). So in addition to z-scoring, I would also implement some sort of trimming procedure at the participant level.
+
+While I don't have experience processing RT data from semantic priming studies, I typically employ this type of trimming procedure for task-switching studies. In doing so, I first z-score each participant's trials (participants usually complete ~300 trials of various types split across multiple blocks, so I'm separately z-scoring each participant's own RT distribution). Next, I drop the first trial of each block and any trials where zRT > 3. Usually this process removes a very small percentage of trials.",No modification,Yes,No,649,True,2023-07-27 18:43:30,2023-07-27 18:54:19,100
+2023-07-28 05:00:01,"1) I would firstly normalize all critical target RTs within subjects as authors mentioned
+2) I would remove outliers within subjects by adopting a criteria of +-2 st dev from the single participant averaged RTs
+3)Then I would calculate the indices :
+RT normalized target unrelated- RT target related for each critical target for each language
+4)  then I would perform multiple correlation models among the different linguistic samples' indices",No modification,Yes,Yes,4978,True,2023-07-28 03:37:01,2023-07-28 05:00:00,100
+2023-07-29 05:35:24,,,,,644,False,2023-07-22 05:24:36,2023-07-22 05:35:20,18
+2023-07-30 05:10:44,,,Yes,No,4845,False,2023-07-23 03:49:58,2023-07-23 05:10:43,73
+2023-07-31 09:08:48,,,Yes,Yes,948634,False,2023-07-13 09:38:13,2023-07-24 09:08:47,82
+2023-08-01 05:13:50,,,Yes,Yes,129,False,2023-07-25 05:11:40,2023-07-25 05:13:49,64
+2023-08-01 16:21:57,"1. Filter for correct responses.
+2. Use pre-registered threshold to trim oddly short and long trials (e.g., less than 200 ms and longer than 2000 ms). 
+3. apply a hoaglin and iglewicz (1987) outlier removal procedure for each condition separately for each participant. This method uses quartiles and distance from the quartiles to to identify and remove outliers.
+4. Apply a log10() transformation.",,Yes,Yes,1045,True,2023-08-01 16:04:31,2023-08-01 16:21:56,100
+2023-08-02 10:54:23,"No additional data processing steps other than removing participants who are outside of 2.5 sds from the mean. ",no modification,Yes,Yes,175,True,2023-08-02 10:51:27,2023-08-02 10:54:23,100
+2023-08-02 20:59:07,,,No,No,29,True,2023-08-02 20:58:37,2023-08-02 20:59:06,100
+2023-08-02 23:32:55,"Response time data like the present one are not often normally distributed. So, I would first log-transform the raw data as a prior, whether at the item level or at the fixed effects level, or I might do an outlier exclusion using the mean and standard deviation, etc. Alternatively, it may be a good idea to use the median. These will be determined after looking at the distribution of the data. Not wanting to be too arbitrary, I would do a preliminary experiment to check the distribution to some extent and pre-register the analysis method.
+The fastest way to do this is to use a robust test such as a rank-based method, or to analyze all at once with a GLMM using an ex-Gaussian distribution. Most response time data tend to fit this distribution.
+
+For example, we could conduct a two-step analysis using GLMM to investigate semantic priming effects across multiple countries. The analysis will be performed in two main stages:
+
+For the difference between Related and Unrelated trials, we will examine whether the difference in reaction times between related and unrelated trials is greater than zero.
+For the correlations across Countries, we will evaluate the correlations of item-level priming effects across different countries.
+
+First of all, code related (1) and unrelated (0) trials.
+
+Then, we will use a GLMM to test whether the difference in reaction times between related and unrelated trials is greater than zero. The model can be expressed as:
+
+y_ijk = beta_0 + beta_1 * RelatedTrial_ijk + b_i + c_j + epsilon_ijk
+
+Where,
+
+y_ijk: Response time for subject i in trial j in country k
+beta_0: Intercept
+beta_1: Coefficient for the fixed effect of related trials
+RelatedTrial_ijk: Indicator for related (1) or unrelated (0) trial
+b_i: Random effect for subject i
+c_j: Random effect for country k
+epsilon_ijk: Error term for trial j
+We will test whether beta_1 is greater than zero, indicating that related trials have longer reaction times than unrelated trials.
+
+Next, we will calculate the item-level priming effects for each target and assess the correlations across different countries. This involves correlating the item-level priming effects based on data from one country with the equivalent effects from other countries.
+","Because some data distributions may create such inappropriateness, we correct them after looking at the data. At this point, it is important to do so openly.",Yes,Yes,2795,True,2023-08-02 22:46:19,2023-08-02 23:32:55,100
+2023-08-03 01:52:05,,Not Certain,No,Yes,749,True,2023-08-03 01:39:35,2023-08-03 01:52:05,100
+2023-08-03 02:37:48,"First of all, I would not have set any threshold to terminate a trial (i.e., 3 seconds) - the long latencies are what usually forms the heavy tail of the distribution, and might be informative - but as I understand, the data is censored now, so there is nothing than can be done about it.
+Apart from analyzing the long response time separately, one could have done a more integrative analysis as well, looking at changes of the tail of the whole right side of the distribution across languages.
+
+When sticking with you suggested analysis procedure, I would check the distribution of the z-scored RTs to make sure that the distributions of the different prime-target /no-prime-target combinations are equal - and to check whether they need to be transformed (e.g., logarithmized) before analysis.
+
+Also, before conducing pearson-correlation, I would examine whether the data confirms to the assumption of linearity, and - particularly if the distributions of the different prime-target /no-prime-target combinations is not normally distributed - perform a leverage value analysis.
+
+One alternative to your approach that comes to my mind is that one could use a multilevel-model instead, with crossed item and person random factors. Here, category membership with regard to language would be the predictor, as well as, say, membership of a response time difference to prime-target /no-prime-target, and an interaction effect included for these two predictors would test invariance across languages. However, the results might the same for all practical purposes...
+
+Finally (and I am sorry, but I have not throught this through), reading words in different languages takes more or less time. I think I would explore whether there is also an effect of the overall magnitude on reading times on the magnitude on priming - and whether this varies as a funciton of language (currently, such informaiton is lost inthe z-scoring procedure). Maybe collecting the mean or median reading times per person for the targest in question and correlating them with the standarized priming effect might be a way to do this...","I think the approach is overall appropriate.
+The only thing I would suggest is to check distributions of the data (and transform them, if necessary) and check the linearity assumption before conducting correlation.",Yes,Yes,1810,True,2023-08-03 02:07:37,2023-08-03 02:37:48,100
+2023-08-03 03:22:50,"1. I would look into NAs. Presumably, given the time-frame for answer, there may a lot of NAs in the trials. Thus, I would consider creating certain criteria for ""when is there too many NAs to use the participant"". I would also consider inspecting differences in descriptive statistics between those cleansed this way and the remaining sample.
+2. I would inspect response time for fillers vs. real stimuli. We may assume filler response time should not be affected by the stimuli. If their descriptives differ, it's an interesting piece of information in itself (especially if there is a similar effect across languages, logically non-sensical filler response time should not differ if the hypothesis is ""correct""). However, I would also consider using the filler response time (after proper transformation) as a covariate in the relation between real English and German stimuli. The logic is that this way you may control for within-subject variance in ""general response time"" (even though with large enough sample this should not be too much of a hassle).
+3. I am not sure what your sampling procedure was, but I can imagine that if there are demographical differences between the national samples, it may affect the results. For instance, if German sample were older than the English one, it could affect response time. Thus, I would check for effects of gender, age, etc.
+4. Similarly, I can imagine that linguists, cognitive scientists, etc. may behave differently than the rest of the sample if they could even become participants in the study. I would check for that and for their distribution across nations.
+5. I would also check for careless responding. Similar to NAs, based on results from previous studies or a rule of thumb (generally +- 2SD), I would inspect their descriptives compared to the remaining sample. Again, I would filter participants who potentially answered carelessly. Also, I would look into how often participants produced NAs and potential careless responses together.
+6. I would look into response patterns. If participants chose a response pattern (the task is lengthy and may become tedious), such as repeating the same answer or switching from one to the other after each trial, their response time may not be useful.
+- In this sense, it may also be good to look at whether response time differs within one participant. The tasks should tire them more if they actually respond to the stimuli instead of responding randomly or in a pattern. Thus, their response time at the end could be longer (yet, it will be a small effect).
+- Also, responding randomly or in a pattern should show in frequency of mistakes in real vs. made-up words. Meaning, you could also divide the sample based on potential random/pattern response and see whether the two groups differ in mistake frequency. However, mistake frequency is a potential discriminant in itself.
+
++ For all such explorative analysis used for data cleansing, it would also be useful to use the data longitudinally and see whether potential groups of participants differ when taking within-subject effects into account. (e.g., a multi-level model with potential careless response vs. rest of sample as a predictor, subjects as a random factor, and response time as the outcome)",The only instance I considered problematic may be the subtraction of general mean instead of some other methods of controlling general response time. I would be afraid it might make the data more dirty.,Yes,Yes,2615,True,2023-08-03 02:39:14,2023-08-03 03:22:50,100
+2023-08-03 07:31:03,"Before the first analysis step, in which data are z-transformed per-participant, I would (in order of the numbered steps):
+1) Exclude all data from participants whose average accuracy was less than 75% in the Lexical Decision Task for *word* trials.
+2) Exclude all data from participants whose average accuracy was less than 75% in the Lexical Decision Task for *non-word* trials.
+3) Exclude trials with response times less than 100 ms.
+4) Exclude trials that reached the timeout limit of 3000 ms.
+5) Exclude all data from participants with N less than 100 trials.","I think the approach is suboptimal but most likely sufficient.
+
+- The description mentions both Pearson's r and Rho. Rho usually refers to Spearman's Rho. It is unclear from the description whether items' priming effects will be ranked prior to the correlation.
+- Estimating the difference in mean (z-scored) response times is problematic. Firstly, the median is probably more appropriate, given the shape of response time distributions. Moreover, the mean discards meaningful differences in the shape of the distribution (e.g., spread and non-decision time/shift). The z-score approach also largely assumes a normal distribution. For instance, excluding items by a z-score threshold will have different impacts at different levels of spread in the RT distribution, as the SD will be a poor measure of the RT distribution's spread.
+- Rather than z-transforming RTs prior to analysis, participant variability could be better accounted for with random effects. This could also include random slopes for the priming effect to estimate the variability of the effect.
+- Item estimates of the priming effect could similarly be estimated in this manner.
+
+To acocunt for shape better, one approach could be to fit a model that better approximates RT distributions (https://github.com/lindeloev/shiny-rt) such as ex-Gaussian or shifted log-normal distributions. The effect of priming could be modelled for all parameters that define the distribution. Such a model would provide a fixed-effect estimate for the population-level effect of priming, and random effects could model variability across languages, as well as participants and items.
+
+However, including a complex random effects formula in such a model may be too computationally intensive when the sample size is very large, as it is in this study, for the model to be feasible. Instead, such a model could be fit to data from each testing site or language separately.
+
+If informative priors would be desirable, the prior could be based on estimates from European languages, where most previous research has been done.",Yes,No,5483,True,2023-08-03 05:59:39,2023-08-03 07:31:03,100
+2023-08-03 10:55:58,I would only use the data for the trials that were correctly responded to.,"This analysis does address the question at hand. I think I would also like to see an analysis comparing the RTs across languages. Presumably, if the priming effect correlation is high the differences between the related and unrelated primes should be similar. However, what if the overall RTs are faster in one language compared to the other. This might be a more important analysis is the study was being conducted with bilinguals. At the least, I think I would like to see a paired bar chart showing the RTs for the related and unrelated primes for both English and German.",Yes,Yes,2047,True,2023-08-03 10:21:49,2023-08-03 10:55:57,100
+2023-08-03 18:41:37,"Data processing steps:
+
+1. Data cleaning: mark for exclusion minimum RTs of less than 160 ms and maximum RTs greater than 3 s.
+
+2. Data filtering (participant and trial level): (1) exclude those participants who do not indicate at least 18 years of age; (2) calculate the proportion of correct answers by word type (word/no word) and language; (3) exclude those participants who do not correctly answer at least 80% of 100 minimum trials; (3) exclude those participants who do not complete at least 100 items. 
+
+3. Data transformation at the item level: (1) transform the individual RTs to z-score ;(2) apply a cut-off criterion for the absolute value z-score of potential outliers at 2,5 and 3,0; (3) compute the RTs with those subsets of trials excluded; and (4) compute individual and averaged RTs by word type and language while including outliers.
+
+4. Compute priming data: (1) calculate information about priming results while including the target word, average RTs, averaged Z-scored RTs, sample sizes, SEs, and priming response latency; (2) compute priming for each item as the average z-scored response latency when presented in the unrelated minus the related condition; (3) compute the average statistics for z-score priming, z-score unrelated response latency, z-score related response latency, the sample size for unrelated trials, and sample size for related trials; (4) these values will be calculated overall, by language, and with/without z-score level exclusions; and (5) calculate the participant-level priming reliability and item-level priming reliability.",No modification.,Yes,No,100533,True,2023-08-02 14:46:04,2023-08-03 18:41:37,100
+2023-08-03 20:05:16,"I think overall the pre-processing approach is OK. The only thing is I have the notion that z-score should be done (besides for each participant separately) also for each condition (related and unrelated) within each participant.
+",I responded that in the previous question.,Yes,No,11565,True,2023-08-03 16:52:29,2023-08-03 20:05:15,100
+2023-08-03 20:26:06,,,No,No,27,True,2023-08-03 20:25:38,2023-08-03 20:26:05,100
+2023-08-04 00:40:26,,,Yes,No,393,True,2023-08-04 00:33:52,2023-08-04 00:40:26,100
+2023-08-04 19:30:24,,,Yes,No,351,True,2023-08-04 19:24:32,2023-08-04 19:30:23,100
+2023-08-05 00:37:53,"Step 1: only the correct trials should be selected for analysis. If participants identified the targets as non-word, it doesn't make sense to include the response time of these trials to examine the priming effect.
+
+Step 2: after filtering the trials based on the correctness of the answers, the data should be filtered based on whether they exceed the mean +- 2/3SD.
+
+Step 3: response times of the rest of the trials should be z-transformed and analysed accordingly.",No modification,Yes,Yes,1853,True,2023-08-05 00:06:58,2023-08-05 00:37:52,100
+2023-08-06 06:21:11,,,No,No,40,True,2023-08-06 06:20:30,2023-08-06 06:21:11,100
+2023-08-07 00:21:12,,,Yes,Yes,201,True,2023-08-07 00:17:50,2023-08-07 00:21:11,100
+2023-08-07 12:46:41,,,Yes,No,2035,True,2023-08-07 12:12:45,2023-08-07 12:46:40,100
+2023-08-08 04:32:38,,,No,No,179,True,2023-08-08 04:29:37,2023-08-08 04:32:37,100
+2023-08-08 14:52:16,,,Yes,No,929,False,2023-08-01 14:36:44,2023-08-01 14:52:14,82
+2023-08-09 02:04:16,"1. Exclude erroneous trials: Check the data and remove any obvious errors or invalid trials.
+2. Remove outliers: Convert reaction time data into z-scores using statistical software (such as SPSS) and calculate the z-scores for each data point. Then, delete data points that exceed ±3 standard deviations, as they can be considered outliers.
+3. Group the data: Divide the data into related trials and unrelated trials based on whether they are congruent or incongruent. For example, categorize cat-dog trials as related trials and cat-car trials as unrelated trials.
+4. Calculate the English priming effect: For unrelated trials, calculate the formula as (Z-score of the (n+1)th RT – Z-score of the nth RT) divided by n. For related trials, calculate the formula as (Z-score of the (m+1)th RT – Z-score of the mth RT) divided by m. The difference between the two values represents the English priming effect. The same steps can be applied to calculate the German priming effect.
+5. Compute correlation: Use SPSS or other statistical software to calculate the correlation between the English and German priming effects for each participant. Correlation coefficients like Pearson's correlation coefficient can be used to determine the strength and direction of the correlation.",无修改,Yes,No,1786,True,2023-08-09 01:34:28,2023-08-09 02:04:15,100
+2023-08-09 10:54:53,,,No,Yes,373,False,2023-08-02 10:48:33,2023-08-02 10:54:46,73
+2023-08-09 12:08:15,..,,Yes,Yes,564,False,2023-08-02 11:58:45,2023-08-02 12:08:10,73
+2023-08-09 12:30:56,,,,,4,False,2023-08-02 12:30:46,2023-08-02 12:30:50,18
+2023-08-09 13:05:53,,,Yes,Yes,27,False,2023-08-02 13:05:22,2023-08-02 13:05:50,45
+2023-08-09 14:04:11,,,,,5,False,2023-08-02 14:04:03,2023-08-02 14:04:08,18
+2023-08-09 22:17:15,,,Yes,Yes,35148,False,2023-08-02 12:31:23,2023-08-02 22:17:12,73
+2023-08-10 00:52:33,,,Yes,No,176,False,2023-08-03 00:49:34,2023-08-03 00:52:30,73
+2023-08-10 04:35:22,,,,,76,False,2023-08-03 04:34:01,2023-08-03 04:35:17,18
+2023-08-10 05:45:59,,,Yes,Yes,589,False,2023-08-03 05:36:08,2023-08-03 05:45:58,73
+2023-08-10 10:24:26,"I will begin by inspecting the dataset to clean it in accordance with the exclusion criteria specified by Buchanan et al. (2022).
+
+Starting with the participant level data, I will exclude those who:
+(i) did not indicate they were at least 18 years of age,
+(ii) did not complete a minimum of 100 trials, and
+(iii) did not achieve a correctness rate of 80% or above.
+
+Subsequently, I will assess the trial data, excluding individual trials that:
+
+(i) Did not receive a response within a 3-second window,
+(ii) Were answered incorrectly, or
+(iii)Had a response latency shorter than 160ms.
+
+Following these exclusions, I will proceed with data transformation, specifically z-transformation, in line with the analysis plan.
+
+Lastly, I will generate categorical variables based on response latencies: one variable to code for trials exceeding an absolute Z value of 2.5 and another for those exceeding a Z value of 3.0. 
+",No modification,No,Yes,2580,True,2023-08-10 09:41:25,2023-08-10 10:24:25,100
+2023-08-10 10:45:53,,,,,2138,False,2023-08-03 10:10:13,2023-08-03 10:45:52,0
+2023-08-10 20:30:16,,,Yes,Yes,230,False,2023-08-03 20:26:25,2023-08-03 20:30:15,73
+2023-08-12 01:06:48,,,Yes,No,326,False,2023-08-05 01:01:15,2023-08-05 01:06:41,73
+2023-08-13 08:33:04,"1) Verify that how the RTs are distributed (and to normalize them in case of a non-normal distribution)
+2) Verify that there are not outlier subjects by 1) checking that the subjects give answers above the chance level (based on their accuracy), 2) correlating the RTs of each participant with the RT average of the remaing sample.
+3) Verify if there are outlier items by comparing RTs and accuracy averages of each item compared to the remaning others. Usually the ""acceptable"" average is based on the type of task. 
+4) Based on the analysis 1) exclude trials with reaction times (RTs) faster than 150 ms or incorrect responses and observations with absolute  standardized residuals  greater than 2 or 2) exclude trials with reaction times (RTs) faster than 150 ms or incorrect responses and RT higher/lower of 2 SDs from the average of each participant for each condition.
+",No modification,Yes,Yes,2867,True,2023-08-13 07:45:15,2023-08-13 08:33:03,100
+2023-08-13 08:33:21,"1. remove trials with incorrect responses, missed responses, and anticipations (RTs < 150 ms. NB: this cutoff is arbitrary and, if possible, it can be better determined by analyzing the distribution of RTs in the next step)
+2. perform a distributional analysis on all the remaining RTs to verify that they are not distributed normally. This could be a problem for the subsequent z-transformation, because both M and SD are very sensitive to extreme outliers. This is particularly important for the present dataset, due to the quite high response timeout (3000 ms). At this stage, the sub-distribution of anticipatory RTs could be evident from the overall distribution (e.g., a ""bump"" centered at 100 ms overimposed over the left tail of the RT distribution), and maybe a better cutoff for the anticipations can be defined as the point where the left tail of the RT distribution start to show an increase.
+2b. If the RTs are not distributed normally, verify whether one of the common RT transformations (i.e., log, inverse (-1000/RT)) has a normal distribution. In case, apply this transformation to RT. 
+3. Check for participants' compliance and exclude outliers. Based on both the mean (tranformed) RT (for all trials) and the accuracy of each participant, exclude participants that are outliers for either measure based on a non-parametric criterion (i.e., more than three scaled MAD above and below, respectively for RT and accuracy, from the median. The scaled MAD is defined as c*median(abs(DATA-median(DATA))), where c=-1/(sqrt(2)*erfcinv(3/2))).
+4. (optional) if standard GLM-based analysis will be performed, requiring to average participants' RT to compute item-level measure, I would replicate the analysis after excluding outlier trials for each participant, defined as experimental (i.e., related and unrelated) trials more than three scaled MAD above the participant's median (transformed) RT, computed using all the included trials.
+   ","Just to be sure, I'd also compute Spearman's correlations (which is more robust than Pearson's to violations)",Yes,Yes,19813,True,2023-08-13 03:03:07,2023-08-13 08:33:21,100
+2023-08-13 10:24:27,"1. remove trials with incorrect responses, missed responses, and RTs<150 ms (considered to be anticipations) 
+2. verify whether RTs are distributed normaly performing distributional analysis 
+If RTs are not distributed normally it could be an issue for z-transformation, because both M and SD are very sensitive to extreme outliers. 
+If the RTs are not distributed normally, verify whether one of the common RT transformations (i.e., log, inverse (-1000/RT)) has a normal distribution. If so, apply this transformation.
+3. Check for participants' compliance and exclude outliers. Based on both the mean RTs and the accuracy of each participant, exclude participants that are outliers for either measures. 
+",No,Yes,Yes,11138,True,2023-08-13 07:18:49,2023-08-13 10:24:27,100
+2023-08-14 03:20:11,,,Yes,Yes,258,False,2023-08-07 03:15:36,2023-08-07 03:19:55,73
+2023-08-14 03:23:23,"1. Removal of trials for which participants took more than 3s (experiment max)
+2. Removal of trials to which participants responded erroneously (based on the accuracy variable).
+3. Outlier removal: responses more than 3SDs above or below the participant- block specific RT mean (because learning may occur across blocks). ","Since item-level priming effects are notoriously unreliable, I wonder whether the analysis is worthwhile pursuing. I would precede it with a reliability analysis within language (Spearman-Brown corrected split-half correlations) and perhaps correct the correlation between languages for attenuation.",Yes,Yes,4422,True,2023-08-14 02:09:40,2023-08-14 03:23:22,100
+2023-08-14 06:16:17,,,No,Yes,413,False,2023-08-07 06:09:22,2023-08-07 06:16:16,73
+2023-08-14 07:31:11,"Response times are known to be positively skewed. z-Transformations work better for normal than for skewed distributions. Two solutions come to my mind: 1) a logarithmic transformation of the response times and 2) analyses based on ordinal data (differences in medians - rank correlation). Ideally, both analyses arrive at the same conclusion. Given that logarithmic functions are somewhat artificial and controversial, I would prefer the simpler, more robust non-parametric analysis. If logarithmic data are used, multilevel analyses would make sense (i.e., individual choices within each person). Econometricians are well acquainted with these sophisticated regression procedures. ",see my last comment.,Yes,No,1719,True,2023-08-14 07:02:30,2023-08-14 07:31:10,100
+2023-08-14 12:46:58,,,,,11,False,2023-08-07 12:46:45,2023-08-07 12:46:57,18
+2023-08-14 15:42:25,"First of all, I would like to point out that I have never analysed such data myself so my comments should be taken with that in mind. From what I understood in the research question, we are interested if the same semantic priming effects would appear with the same prime-target pairs across different languages. I feel like the analysis proposed is already a step further from that since you would like to compare/correlate the differences in semanticly related and unrealted pairs of two different languages (if I understand correctly). Therefore, I would propose to first look at the actual reaction times in related and unrelated pairs and look for correlations in two different languages. So for example, if the reaction times for related pairs in English is about the same as reaction time for the same pairs in German. And then the same for unrelated. With this you would have a foundation and see if there are already discrepancies here or not. And after this, the next step would be to see if there are correlations between the differences of unrelated and related pairs in the two languages. Additionally, this step that I proposed would already answer the foundamental part of the research question to see whether the same pairs of words elicit the same priming effect in two different languages.",No modification.,No,Yes,2493,True,2023-08-14 15:00:51,2023-08-14 15:42:24,100
+2023-08-14 20:16:38,"Before analyses, I would implement participant and item level exclusions based on error and completion rates. 
+
+The criteria listed in the preprint seem reasonable given the set up of the task, and I'm not sure if this is the type of processing you're referring to (since it's already pre-registered). I will adjust for sake of providing an alternative approach, but note that lexical decision task are not my area of expertise.
+
+1) Remove participants who did not provide the correct response greater than 30% of the time -- this criteria includes time outs, errors, or incompletion of the task. 
+2) Remove individual trials that are timeouts, errors, or have latencies less than 300 ms.","No modification. ",Yes,No,86068,True,2023-08-13 20:22:08,2023-08-14 20:16:37,100
+2023-08-15 04:55:32,"Before the analysis: I was missing screening outliers before calculating each participant mean RT, both by item and by participant. 
+Response times shorter than~150 MS are probably not real. Although you only allowed up to 3 seconds per trial, I'd also consider screening long RT (>2.5 SD above the participant mean).
+Finally, target items (in specific language) with extremely longer RT (>2.5 SD above the target items mean) should also be screened out. 
+
+",No modification,Yes,No,2205,True,2023-08-15 04:18:46,2023-08-15 04:55:32,100
+2023-08-15 07:11:55,,,Yes,Yes,8199,True,2023-08-15 04:55:15,2023-08-15 07:11:55,100
+2023-08-15 07:25:54,"Our lab understands the originally planned analysis as follows:
+
+Analysis (original) – step 1.1: z-transformation of response times
+Analysis (original) – step 1.2: arithmetic means of response times
+Analysis (original) – step 1.3: differences between unrelated and related trials
+Analysis (original) – step 2: correlation of priming effects (differences) between languages
+
+To optimise data processing, we propose to adjust the steps of the analysis by switching steps 1.2 and 1.3. This adjustment will not alter the results. You find the analysis process, we propose, below:
+
+Analysis – step 1.1: z-transformation of response times
+Analysis – step 1.2: differences between unrelated and related trials
+Analysis – step 1.3: arithmetic means of differences by country
+Analysis – step 2: correlation of priming effects (differences) between languages
+
+The process, described below, integrates the data processing steps with the afore-proposed analysis process:
+
+Data processing – step 1: Downloading and cleaning the raw dataset
+--> result: dataset A with participants as rows and reaction times as columns
+Analysis – step 1.1: z-transformation of response times
+--> result: dataset A with added columns, containing z-transformed values
+Analysis – step 1.2: differences between unrelated and related trials
+--> result: dataset A with added columns, containing differences between unrelated and related trials
+Analysis – step 1.3: arithmetic means of differences by country
+Data processing – step 2: Creating a new dataset from the results of analysis – step 1.3
+--> result: dataset B with differences between unrelated and related trials in rows and countries/languages in columns
+Analysis – step 2: correlation of priming effects (differences) between countries/languages
+
+
+Alternatively, there is another solution, which, however, requires adjusting the analysis slightly more. In this case, the differences between unrelated and related trials would have to be calculated on an individual (participant) level. Then, each difference would have to be correlated between two countries/languages, e.g. English and German. Finally, we could calculate the mean of all of the correlation coefficient, similar to Cronbach’s alpha.
+
+
+
+
+
+",Please see the answer to the question before,Yes,Yes,719,True,2023-08-15 07:13:54,2023-08-15 07:25:53,100
+2023-08-15 07:26:01,"Our lab understands the originally planned analysis as follows:
+
+Analysis (original) – step 1.1: z-transformation of response times
+Analysis (original) – step 1.2: arithmetic means of response times
+Analysis (original) – step 1.3: differences between unrelated and related trials
+Analysis (original) – step 2: correlation of priming effects (differences) between languages
+
+To optimise data processing, we propose to adjust the steps of the analysis by switching steps 1.2 and 1.3. This adjustment will not alter the results. You find the analysis process, we propose, below:
+
+Analysis – step 1.1: z-transformation of response times
+Analysis – step 1.2: differences between unrelated and related trials
+Analysis – step 1.3: arithmetic means of differences by country
+Analysis – step 2: correlation of priming effects (differences) between languages
+
+The process, described below, integrates the data processing steps with the afore-proposed analysis process:
+
+Data processing – step 1: Downloading and cleaning the raw dataset
+--> result: dataset A with participants as rows and reaction times as columns
+Analysis – step 1.1: z-transformation of response times
+--> result: dataset A with added columns, containing z-transformed values
+Analysis – step 1.2: differences between unrelated and related trials
+--> result: dataset A with added columns, containing differences between unrelated and related trials
+Analysis – step 1.3: arithmetic means of differences by country
+Data processing – step 2: Creating a new dataset from the results of analysis – step 1.3
+--> result: dataset B with differences between unrelated and related trials in rows and countries/languages in columns
+Analysis – step 2: correlation of priming effects (differences) between countries/languages
+
+
+Alternatively, there is another solution, which, however, requires adjusting the analysis slightly more. In this case, the differences between unrelated and related trials would have to be calculated on an individual (participant) level. Then, each difference would have to be correlated between two countries/languages, e.g. English and German. Finally, we could calculate the mean of all of the correlation coefficient, similar to Cronbach’s alpha.
+",Please see the answer to the question before,Yes,No,734,True,2023-08-15 07:13:45,2023-08-15 07:26:00,100
+2023-08-15 08:41:19,"Data Cleaning:
+Missing Values: Identify and handle missing values. This could mean imputing them based on the mean, median, or mode of the column, or dropping rows/columns with missing values, depending on the percentage and nature of the missingness.
+Outliers: Identify and address outliers, which might skew the analysis. Methods include the IQR (Interquartile Range) method or Z-scores.
+Standardization/Normalization:
+If we are using algorithms sensitive to feature scales (e.g., SVM, K-means), we should standardize (z-score normalization) or normalize (min-max scaling) the features. Standardization would mean subtracting the mean and dividing by the standard deviation, while normalization involves adjusting values measured on different scales to a common scale.
+Feature Engineering:
+Feature Extraction: Depending on the nature of the data, techniques like PCA (Principal Component Analysis) or LDA (Linear Discriminant Analysis) can be used to reduce dimensionality and capture the most variance in the data.
+Feature Selection: If we have a large number of features, we may want to select the most significant ones based on criteria like mutual information, correlation, or feature importance from tree-based models.
+Handling Categorical Data:
+Encoding: Convert categorical data into numerical format using techniques like one-hot encoding, label encoding, or binary encoding.
+",no modification,Yes,Yes,282,True,2023-08-15 08:36:36,2023-08-15 08:41:19,100
+2023-08-16 06:14:04,,,No,Yes,78,False,2023-08-09 06:12:44,2023-08-09 06:14:03,73
+2023-08-17 08:27:35,,,Yes,No,28,False,2023-08-15 13:02:23,2023-08-15 13:02:51,45
+2023-08-17 08:27:35,,,No,Yes,381014,False,2023-08-06 06:21:19,2023-08-10 16:11:34,64
+2023-08-17 08:27:37,,,Yes,Yes,664,False,2023-08-14 05:11:23,2023-08-14 05:22:27,91
