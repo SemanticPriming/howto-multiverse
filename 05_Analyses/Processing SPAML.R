@@ -1,8 +1,8 @@
-en_data_all <- read.csv("../Data SPAML/en_full_data.csv.gz", encoding = "UTF-8") 
-en_stimuli_data <- read.csv("../Data SPAML/en_words.csv", encoding = "UTF-8")
-de_data_all <- read.csv("../Data SPAML/de_full_data.csv.gz", encoding = "UTF-8") 
-de_stimuli_data <- read.csv("../Data SPAML/de_words.csv", encoding = "UTF-8")
-match_stimuli <- read.csv("../Data SPAML/de_matched.csv", encoding = "UTF-8") %>%
+en_data_all <- read.csv("05_Analyses/Data/en_full_data.csv.gz", encoding = "UTF-8") 
+en_stimuli_data <- read.csv("05_Analyses/Data/en_words.csv", encoding = "UTF-8")
+de_data_all <- read.csv("05_Analyses/Data/de_full_data.csv.gz", encoding = "UTF-8") 
+de_stimuli_data <- read.csv("05_Analyses/Data/de_words.csv", encoding = "UTF-8")
+match_stimuli <- read.csv("05_Analyses/Data/de_matched.csv", encoding = "UTF-8") %>%
   mutate_at(vars(en_cue, en_target), ~tolower(.)) #converts the English stimuli to lower case to later match with the other datasets
 
 #create pairs in the stimuli files
@@ -148,8 +148,8 @@ for (i in 1: nrow(de_SPAML)){
 #for English, we can just use the targets to match the ids
 en_SPAML <- left_join(en_SPAML, translations[, c("target_id", "en_target")], by = c("word" = "en_target"))
 
-write.csv(de_SPAML, "de_SPAML.csv", row.names = FALSE)
-write.csv(en_SPAML, "en_SPAML.csv", row.names = FALSE)
+write.csv(de_SPAML, "05_Analyses/Data/de_SPAML.csv", row.names = FALSE)
+write.csv(en_SPAML, "05_Analyses/Data/en_SPAML.csv", row.names = FALSE)
 
 #old code matching based on translated pairs (doesn't work, because some unrelated pairs had to be reshuffled; see above)
 #en_key <- pivot_longer(translations[, c("target_id", "en_rel", "en_unrel")], cols = -c("target_id"), names_to = "type",  values_to = "pair")  

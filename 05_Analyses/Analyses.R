@@ -11,8 +11,8 @@ library(gridExtra)
 
 set.seed(42) #relevant for Silverman's test
 
-source("../Analyses/Functions multiverse.R")
-#source("../Analyses/Processing SPAML.R") #if you run for the first time comment out this line
+source("05_Analyses/Functions multiverse.R")
+#source("05_Analyses/Processing SPAML.R") #if you run for the first time comment out this line
 
 en_SPAML <- read.csv("../Data SPAML/en_SPAML.csv")
 de_SPAML <- read.csv("../Data SPAML/de_SPAML.csv")
