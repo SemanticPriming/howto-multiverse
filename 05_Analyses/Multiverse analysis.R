@@ -119,7 +119,8 @@ for (i in 1:8){
                     removeFillerwords() %>% 
                     itemPriming() 
                   
-                  de_dataMultiverse <- de_SPAML %>% decision1(exclBelow18 = TRUE) %>% 
+                  de_dataMultiverse <- de_SPAML %>% 
+                    decision1(exclBelow18 = TRUE) %>% 
                     decision2(exclNonNative = TRUE) %>% 
                     decision4(exclBelow100trials = TRUE) %>% 
                     decision5(exclSameResp = TRUE) %>% 
